@@ -14,7 +14,7 @@ function init(){
 function set_artwork(track) {
     var artwork_url = track.artwork_url;
     if (track.artwork_url == null) artwork_url = './resources/blank.png';
-    $('#track_list').prepend('<div id="'+track.id+'"></div>');
+    $('#track_list').prepend('<div class="track" id="'+track.id+'"></div>');
 
     var trackElement = $('#'+track.id);
     trackElement.prepend('<p>'+track.title+'</p>');
