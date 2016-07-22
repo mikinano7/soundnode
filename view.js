@@ -40,16 +40,6 @@ $(document).on('click', '#pause', function(){
     pause();
 });
 
-$(document).on('click', '#search_submit', function(){
-    $('#track_list').empty();
-    var query = $('#search_form').val();
-    SC.get('/tracks', {
-        q: query
-    }).then(function(tracks) {
-        tracks.forEach(set_artwork);
-    });
-});
-
 $(document).on('click', '.change', function(){
     var id = $(this).parent().attr('id');
 
@@ -62,4 +52,14 @@ $(document).on('click', '.change', function(){
             play(id);
         }
     });
+});
+
+$(document).on('submit', '#search', function(event) {
+    var query = $('#search_form').val();
+    SC.get('/tracks', {
+        q: query
+    }).then(function(tracks) {
+        tracks.forEach(set_artwork);
+    });
+    event.preventDefault();
 });
