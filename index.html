@@ -7,11 +7,18 @@
     <script type="text/javascript" src="view.js"></script>
 </head>
 <body onload="init()">
-    <button id="play">Play</button>
-    <button id="pause">Pause</button>
-    <a href="https://soundcloud.com/">
-        <img src="resources/soundcloud_logo_black.png" />
-    </a>
+    <div id="player">
+        <button id="play">Play</button>
+        <button id="pause">Pause</button>
+        <a href="https://soundcloud.com/">
+            <img src="resources/soundcloud_logo_black.png" />
+        </a>
+    </div>
+    <div id="search">
+        <label for="search_form"></label>
+        <input id="search_form" type="text" />
+        <button id="search_submit">Search</button>
+    </div>
     <div id="track_list"></div>
 </body>
 </html>

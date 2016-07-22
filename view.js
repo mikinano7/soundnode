@@ -9,12 +9,6 @@ var current_music;
 
 function init(){
     SC.initialize({client_id: Config.client_id});
-
-    SC.get('/tracks', {
-        q: 'てーきゅう+metal'
-    }).then(function(tracks) {
-        tracks.forEach(set_artwork);
-    });
 }
 
 function set_artwork(track) {
@@ -33,7 +27,7 @@ function play(id) {
     orig_player.play();
 }
 
-function pause(id) {
+function pause() {
     is_playing = false;
     orig_player.pause();
 }
@@ -43,7 +37,17 @@ $(document).on('click', '#play', function(){
 });
 
 $(document).on('click', '#pause', function(){
-    pause(current_music);
+    pause();
+});
+
+$(document).on('click', '#search_submit', function(){
+    $('#track_list').empty();
+    var query = $('#search_form').val();
+    SC.get('/tracks', {
+        q: query
+    }).then(function(tracks) {
+        tracks.forEach(set_artwork);
+    });
 });
 
 $(document).on('click', '.change', function(){
@@ -51,7 +55,7 @@ $(document).on('click', '.change', function(){
 
     SC.stream('tracks/'+id).then(function(player){
         if (current_music == id) {
-            if (is_playing) pause(id);
+            if (is_playing) pause();
             else play(id);
         } else {
             orig_player = player;
