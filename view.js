@@ -13,12 +13,12 @@ function init(){
 
 function set_artwork(track) {
     var artwork_url = track.artwork_url;
-    if (track.artwork_url == null) artwork_url = './resources/blank.png';
-    $('#track_list').prepend('<div class="track" id="'+track.id+'"></div>');
+    if (track.artwork_url == null) artwork_url = './resources/cover_none.png';
+    $('#content').prepend('<div class="track" id="'+track.id+'"></div>');
 
     var trackElement = $('#'+track.id);
     trackElement.prepend('<p>'+track.title+'</p>');
-    trackElement.prepend('<img src="'+artwork_url+'" class="change" />')
+    trackElement.prepend('<img src="'+artwork_url+'" class="change" height="100" width="100" />')
 }
 
 function play(id) {
@@ -55,6 +55,7 @@ $(document).on('click', '.change', function(){
 });
 
 $(document).on('submit', '#search', function(event) {
+    $('#content').empty();
     var query = $('#search_form').val();
     SC.get('/tracks', {
         q: query
