@@ -19,28 +19,17 @@ body {
     background-color: lightgray;
 }
 
+#header form {
+    float: left;
+    height: 100%;
+    box-sizing: border-box;
+}
+
 #search_form {
     height: 24px;
 }
 
-#content {
-    padding-top: 30px;
-    padding-bottom: 50px;
-}
-
-#content .track {
-    border: 1px solid #aaa;
-}
-
-#footer {
-    height: 50px;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    background-color: lightgray;
-}
-
-#footer a {
+#header a {
     float: right;
     height: 100%;
     box-sizing: border-box;
@@ -54,10 +43,33 @@ body {
     right: 0px;
 }
 
+#content {
+    padding-top: 30px;
+    padding-bottom: 50px;
+}
+
+#content div.track {
+    border: 1px solid #aaa;
+}
+
+#content img.change {
+    width: 100px;
+    height: 100px;
+}
+
+#footer {
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: lightgray;
+}
+
 #player {
-    float: left;
+    float: right;
     height: 100%;
     box-sizing: border-box;
+    margin-right: 10px;
 }
 
 #player img.player {

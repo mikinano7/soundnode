@@ -3,9 +3,9 @@ const Config = require('config');
 
 var $ = jQuery = require("./jquery-2.1.4.min.js");
 
-var orig_player;
-var is_playing;
-var current_music;
+var orig_player = null;
+var is_playing = false;
+var current_music = [];
 
 function init(){
     SC.initialize({client_id: Config.client_id});
@@ -18,11 +18,11 @@ function set_artwork(track) {
 
     var trackElement = $('#'+track.id);
     trackElement.prepend('<p>'+track.title+'</p>');
-    trackElement.prepend('<img src="'+artwork_url+'" class="change" height="100" width="100" />')
+    trackElement.prepend('<img src="'+artwork_url+'" class="change" />')
 }
 
 function play(id) {
-    current_music = id;
+    current_music.id = id;
     is_playing = true;
     orig_player.play();
 }
@@ -33,7 +33,7 @@ function pause() {
 }
 
 $(document).on('click', '#play', function(){
-    play(current_music);
+    play(current_music.id);
 });
 
 $(document).on('click', '#pause', function(){
